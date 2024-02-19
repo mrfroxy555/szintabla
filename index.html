@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szintabla</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+
+<table id="colorTable">
+ 
+</table>
+
+<script>
+  
+  function generateColorCode(red, green, blue) {
+    return '#' + red.toString(16).padStart(2, '0') +
+                  green.toString(16).padStart(2, '0') +
+                  blue.toString(16).padStart(2, '0');
+  }
+
+  
+  var table = document.getElementById('colorTable');
+
+  for (var i = 0; i < 16; i++) {
+    var row = table.insertRow();
+
+    for (var j = 0; j < 16; j++) {
+      var cell = row.insertCell();
+      var color = generateColorCode(j * 16, i * 16, 0); 
+      cell.style.backgroundColor = color;
+      cell.setAttribute('title', color); 
+      
+     
+      if (i === 0 && j === 0) {
+        cell.setAttribute('title', '#000000');
+      }
+      
+      
+      if (i === 0 && j === 15) {
+        cell.setAttribute('title', '#FF0000');
+      }
+      
+      
+      if (i === 15 && j === 0) {
+        cell.setAttribute('title', '#00FF00');
+      }
+      
+      
+      if (i === 15 && j === 15) {
+        cell.setAttribute('title', '#FFFF00');
+      }
+    }
+  }
+</script>
+
+
+</body>
+</html>
+
